@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main {
+            width: 50px;
+            height: 50px;
+            background-color: darkgrey;
+        }
+    </style>
+</head>
+
+
+<body>
+    <h3 id="energy">
+        </h6>
+        <div id="main">
+
+        </div>
+        <button id="swithFlashLamp" onclick="turnOnLamp()">On</button>
+        <button id="light" onclick="lightLamp()">Chieu sang</button>
+
+
+
+        <script src="Battery.js"></script>
+        <script src="FlashLamp.js"></script>
+
+
+        <script>
+            let battery = new Battery(); //100
+
+            let lamp = new FlashLamp();
+
+            let battery2 = new Battery(); // 50
+            battery2.setEnergy(50);
+
+
+            lamp.setBattery(battery2);
+
+            function turnOnLamp() {
+                lamp.turnOn();
+            }
+
+            function lightLamp() {
+                lamp.light();
+                showEnergyBattery();
+            }
+
+            function showEnergyBattery() {
+                document.getElementById('energy').innerHTML = "Pin den " + lamp.battery.getEnergy();
+            }
+
+            showEnergyBattery();
+        </script>
+</body>
+
+</html>
